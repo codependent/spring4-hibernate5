@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:cfg="http://www.mutua.es/schemas/architecture/configuration"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd
+           http://www.mutua.es/schemas/architecture/configuration 
+           http://wwwd.mutua.es/schemas/architecture/configuration-1.0.xsd
+           http://www.springframework.org/schema/data/jpa
+	       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+	       http://www.springframework.org/schema/data/mongo
+	       http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+           ">
+
+	<jpa:repositories base-package="com.codependent.s4h5.dao" entity-manager-factory-ref="mainEntityManagerFactory"/>
+
+	<context:component-scan base-package="com.codependent.s4h5.service.impl" />
+	<context:component-scan base-package="com.codependent.s4h5.mapper" />
+	<bean id="dozerMapper" class="org.dozer.spring.DozerBeanMapperFactoryBean"/>
+	
+</beans>

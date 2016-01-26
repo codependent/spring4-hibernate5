@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:tst="http://www.mutua.es/schemas/architecture/test"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd
+           http://www.mutua.es/schemas/architecture/test
+           http://wwwd.mutua.es/schemas/architecture/test-1.0.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/jdbc
+           http://www.springframework.org/schema/jdbc/spring-jdbc.xsd           
+           ">
+
+	<!-- ### TRANSACTION ### -->
+	<!-- Instructs Spring to perform declarative transaction management on annotated classes -->
+	<tx:annotation-driven order="0" />
+
+	<!-- Drives transactions using datasource transaction manager -->
+	<bean name="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="mainEntityManagerFactory" />
+	</bean>
+
+	<bean id="mainEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="mainPersistenceUnit"/>
+        <property name="dataSource" ref="mainDataSource"/>
+        <property name="packagesToScan" value="com.codependent.s4h5.entity"/>
+        <property name="jpaProperties">
+        	<props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.import_files">scripts/initData.sql</prop>
+            </props>
+        </property>
+        <property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+		</property>
+		<property name="jpaDialect">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+		</property>
+    </bean>
+	 
+	<import resource="classpath:com/codependent/s4h5/spring/library.xml" />
+
+	<jdbc:embedded-database id="mainDataSource" type="HSQL"/>
+	
+</beans>
