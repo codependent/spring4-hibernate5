@@ -17,7 +17,7 @@ public class FooEmployeeEntity extends BaseEntity<Integer> {
 
 	@Id
 	@Column(name="FOEMPLE_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id ;
 	
 	@Column(name="FOEMPLE_NAME")

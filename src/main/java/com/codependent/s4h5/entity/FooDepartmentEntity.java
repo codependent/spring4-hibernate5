@@ -19,7 +19,7 @@ public class FooDepartmentEntity extends BaseEntity<Integer> {
 
 	@Id
 	@Column(name="FODEPAR_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id ;
 	
 	@Column(name="FODEPAR_NAME")
