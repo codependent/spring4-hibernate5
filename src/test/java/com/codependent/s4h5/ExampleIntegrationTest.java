@@ -32,11 +32,6 @@ public class ExampleIntegrationTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	IFooEmployeeDAO fooEmployeeDAO;
 
-	@BeforeMethod
-	public void prepareMocks() {
-		MockitoAnnotations.initMocks(this);
-	}
-	
 	public void testExample() {
 
 		FooEmployeeEntity mockResponse = new FooEmployeeEntity();

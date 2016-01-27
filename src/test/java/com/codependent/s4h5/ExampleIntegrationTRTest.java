@@ -37,6 +37,11 @@ public class ExampleIntegrationTRTest extends AbstractTransactionalTestNGSpringC
 
 	@Transactional
 	public void testExampleInsertWithRollback() {
+		
+		FooEmployee response = null;
+		response = fooUserService.getEmployee(1);
+
+		
 		FooEmployee newFoo = new FooEmployee();
 		newFoo.setName("James");
 		createdFooWithRollback = fooUserService.createEmployee(newFoo).getId();
@@ -48,7 +53,7 @@ public class ExampleIntegrationTRTest extends AbstractTransactionalTestNGSpringC
 
 		em.clear();
 
-		FooEmployee response = null;
+		response = null;
 		response = fooUserService.getEmployee(createdFooWithRollback);
 
 		assertNotNull(response);

@@ -220,7 +220,7 @@
 	<properties>
 		<spring-version>4.2.1.RELEASE</spring-version>
 		<spring-data-releasetrain-version>Gosling-SR1</spring-data-releasetrain-version>
-		<hibernate-version>4.2.19.Final</hibernate-version>
+		<hibernate-version>5.0.7.Final</hibernate-version>
 		<testng-version>6.8.17</testng-version>
 		<powermock-version>1.6.2</powermock-version>
 		<slf4j-version>1.7.7</slf4j-version>
